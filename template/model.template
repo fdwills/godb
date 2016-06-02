@@ -1,0 +1,16 @@
+// auto generated file
+// DO NOT EDIT!
+
+package model
+
+import (
+$MODEL_IMPORT$
+)
+
+type $SERVICE_NAME$ struct {
+    $MODEL_FIELDS$
+}
+
+func ($SERVICE_NAME$) TableName() string {
+	return "$TABLE_NAME$"
+}

@@ -1,0 +1,42 @@
+// auto generated file
+// DO NOT EDIT!
+
+syntax = "proto3";
+
+package pb;
+
+service $SERVICE_NAME$ {
+  rpc Get$SERVICE_NAME$(Get$SERVICE_NAME$Request) returns ($SERVICE_NAME$Object) {}
+  rpc Update$SERVICE_NAME$(Update$SERVICE_NAME$Request) returns (Update$SERVICE_NAME$Response) {}
+  rpc Create$SERVICE_NAME$($SERVICE_NAME$Object) returns (Create$SERVICE_NAME$Response) {}
+  rpc Query$SERVICE_NAME$($SERVICE_NAME$Object) returns (Query$SERVICE_NAME$Response) {}
+  rpc QueryOne$SERVICE_NAME$($SERVICE_NAME$Object) returns ($SERVICE_NAME$Object) {}
+}
+
+message Get$SERVICE_NAME$Request {
+$GET_REQUEST_FIELDS$
+}
+
+message $SERVICE_NAME$Object {
+$GET_RESPONSE_FIELDS$
+}
+
+
+message Create$SERVICE_NAME$Response {
+  int64 affect_num = 1;
+  $SERVICE_NAME$Object $MODEL_NAME$ = 2;
+}
+
+message Update$SERVICE_NAME$Request {
+$GET_REQUEST_FIELDS$
+    $SERVICE_NAME$Object $MODEL_NAME$ = 2;
+}
+
+message Update$SERVICE_NAME$Response {
+  int64 affect_num = 1;
+  $SERVICE_NAME$Object $MODEL_NAME$ = 2;
+}
+
+message Query$SERVICE_NAME$Response {
+  repeated $SERVICE_NAME$Object $MODEL_NAME$s = 1;
+}

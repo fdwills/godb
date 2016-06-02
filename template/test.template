@@ -1,0 +1,29 @@
+// auto generated file
+// DO NOT EDIT!
+
+package main
+
+import (
+	"../pb"
+	"golang.org/x/net/context"
+	"google.golang.org/grpc"
+	"log"
+	"../core"
+)
+
+func main() {
+	conn, err := grpc.Dial(core.GetConfig().Listen, grpc.WithInsecure())
+	if err != nil {
+		log.Fatalf("did not connect: %v", err)
+	}
+	defer conn.Close()
+
+	c := pb.New$SERVICE_NAME$Client(conn)
+
+	r, err := c.Get$SERVICE_NAME$(context.Background(), &pb.$SERVICE_NAME$Object{$PRIMARY_KEY$: 1})
+
+	if err != nil {
+		log.Fatalf("could not get: %v", err)
+	}
+	log.Printf("Get $SERVICE_NAME$ $PRIMARY_KEY$: %d\n", r.$PRIMARY_KEY$)
+}

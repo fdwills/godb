@@ -1,0 +1,85 @@
+// auto generated file
+// DO NOT EDIT!
+
+package server
+
+import (
+	"../core"
+	"../model"
+	"../pb"
+	_ "github.com/lib/pq"
+	"golang.org/x/net/context"
+	$SERVER_IMPORT$
+)
+
+type $SERVICE_NAME$Server struct{}
+
+func (s *$SERVICE_NAME$Server) Get$SERVICE_NAME$(ctx context.Context, in *pb.Get$SERVICE_NAME$Request) (*pb.$SERVICE_NAME$Object, error) {
+	db := core.GetMasterDB(core.READ_MODE)
+	var $MODEL_NAME$ model.$SERVICE_NAME$
+	db.Find(&$MODEL_NAME$, in.$PRIMARY_KEY$)
+	return &pb.$SERVICE_NAME$Object{
+       $GET_SERVER_RESPONSE_FIELDS$
+	}, nil
+}
+
+func (s *$SERVICE_NAME$Server) Create$SERVICE_NAME$(ctx context.Context, in *pb.$SERVICE_NAME$Object) (*pb.Create$SERVICE_NAME$Response, error) {
+	db := core.GetMasterDB(core.READ_MODE)
+
+	r := db.Create(
+		&model.$SERVICE_NAME${
+		    $BIND_CREATE_FIELDS$
+		})
+	return &pb.Create$SERVICE_NAME$Response{
+		AffectNum: r.RowsAffected,
+	}, nil
+}
+
+func (s *$SERVICE_NAME$Server) Update$SERVICE_NAME$(ctx context.Context, in *pb.Update$SERVICE_NAME$Request) (*pb.Update$SERVICE_NAME$Response, error) {
+	db := core.GetMasterDB(core.READ_MODE)
+	var $MODEL_NAME$ model.$SERVICE_NAME$
+	db.Find(&$MODEL_NAME$, in.$PRIMARY_KEY$)
+	update_$MODEL_NAME$ := in.$SERVICE_NAME$
+
+	row_affected := db.Model(&model.$SERVICE_NAME${$PRIMARY_KEY$: in.$PRIMARY_KEY$}).Updates(
+		model.$SERVICE_NAME${
+		    $BIND_UPDATE_FIELDS$
+		}).RowsAffected
+	return &pb.Update$SERVICE_NAME$Response{
+		AffectNum: row_affected,
+	}, nil
+}
+
+
+func (s *$SERVICE_NAME$Server) Query$SERVICE_NAME$(ctx context.Context, in *pb.$SERVICE_NAME$Object) (*pb.Query$SERVICE_NAME$Response, error) {
+	var $MODEL_NAME$_objects []*pb.$SERVICE_NAME$Object
+	db := core.GetMasterDB(core.READ_MODE)
+	var $MODEL_NAME$s []model.$SERVICE_NAME$
+
+	db.Where(&model.$SERVICE_NAME${$PRIMARY_KEY$: in.$PRIMARY_KEY$}).Find(&$MODEL_NAME$s)
+	for _, $MODEL_NAME$ := range $MODEL_NAME$s {
+		$MODEL_NAME$_objects = append($MODEL_NAME$_objects,
+			&pb.$SERVICE_NAME$Object{
+                  $GET_SERVER_RESPONSE_FIELDS$
+			},
+		)
+	}
+
+	return &pb.Query$SERVICE_NAME$Response{
+	    $SERVICE_NAME$s: $MODEL_NAME$_objects,
+	}, nil
+}
+
+func (s *$SERVICE_NAME$Server) QueryOne$SERVICE_NAME$(ctx context.Context, in *pb.$SERVICE_NAME$Object) (*pb.$SERVICE_NAME$Object, error) {
+	db := core.GetMasterDB(core.READ_MODE)
+	var $MODEL_NAME$ model.$SERVICE_NAME$
+
+	db.Where(&model.$SERVICE_NAME${$PRIMARY_KEY$: in.$PRIMARY_KEY$}).Find(&$MODEL_NAME$)
+	if $MODEL_NAME$.$PRIMARY_KEY$ != 0 {
+		return &pb.$SERVICE_NAME$Object{
+              $GET_SERVER_RESPONSE_FIELDS$
+		}, nil
+	}
+
+	return &pb.$SERVICE_NAME$Object{}, nil
+}

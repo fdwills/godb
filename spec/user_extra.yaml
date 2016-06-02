@@ -1,0 +1,5 @@
+uid: integer,pkey
+key1: integer
+key2: integer
+create_at: timestamp
+update_at: timestamp

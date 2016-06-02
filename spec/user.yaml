@@ -1,0 +1,6 @@
+uid: integer,pkey
+name: string
+phone: string
+password: string
+create_at: timestamp
+update_at: timestamp

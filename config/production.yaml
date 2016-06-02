@@ -1,0 +1,12 @@
+mode: debug
+
+listen: localhost:8801
+
+# postgres/mysql....
+db_driver: postgres
+
+# db(db_master, db_shard)
+db_master:
+  read: user=mydb dbname=mydb host=127.0.0.1 sslmode=disable
+  write: user=mydb dbname=mydb host=127.0.0.1 sslmode=disable
+  max_pool_size: 5

@@ -1,0 +1,47 @@
+// auto generated file
+// DO NOT EDIT!
+
+syntax = "proto3";
+
+package pb;
+
+service User {
+  rpc GetUser(GetUserRequest) returns (UserObject) {}
+  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {}
+  rpc CreateUser(UserObject) returns (CreateUserResponse) {}
+  rpc QueryUser(UserObject) returns (QueryUserResponse) {}
+  rpc QueryOneUser(UserObject) returns (UserObject) {}
+}
+
+message GetUserRequest {
+    int32 uid = 1;
+}
+
+message UserObject {
+    int32 uid = 1;
+    string update_at = 2;
+    string create_at = 3;
+    string phone = 4;
+    string password = 5;
+    string name = 6;
+}
+
+
+message CreateUserResponse {
+  int64 affect_num = 1;
+  UserObject user = 2;
+}
+
+message UpdateUserRequest {
+    int32 uid = 1;
+    UserObject user = 2;
+}
+
+message UpdateUserResponse {
+  int64 affect_num = 1;
+  UserObject user = 2;
+}
+
+message QueryUserResponse {
+  repeated UserObject users = 1;
+}

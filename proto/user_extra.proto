@@ -1,0 +1,46 @@
+// auto generated file
+// DO NOT EDIT!
+
+syntax = "proto3";
+
+package pb;
+
+service UserExtra {
+  rpc GetUserExtra(GetUserExtraRequest) returns (UserExtraObject) {}
+  rpc UpdateUserExtra(UpdateUserExtraRequest) returns (UpdateUserExtraResponse) {}
+  rpc CreateUserExtra(UserExtraObject) returns (CreateUserExtraResponse) {}
+  rpc QueryUserExtra(UserExtraObject) returns (QueryUserExtraResponse) {}
+  rpc QueryOneUserExtra(UserExtraObject) returns (UserExtraObject) {}
+}
+
+message GetUserExtraRequest {
+    int32 uid = 1;
+}
+
+message UserExtraObject {
+    int32 key2 = 1;
+    int32 key1 = 2;
+    string update_at = 3;
+    int32 uid = 4;
+    string create_at = 5;
+}
+
+
+message CreateUserExtraResponse {
+  int64 affect_num = 1;
+  UserExtraObject user_extra = 2;
+}
+
+message UpdateUserExtraRequest {
+    int32 uid = 1;
+    UserExtraObject user_extra = 2;
+}
+
+message UpdateUserExtraResponse {
+  int64 affect_num = 1;
+  UserExtraObject user_extra = 2;
+}
+
+message QueryUserExtraResponse {
+  repeated UserExtraObject user_extras = 1;
+}
